@@ -197,5 +197,6 @@ export class HomeComponent implements OnInit {
     const utcDt = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
     this.fileName = 'cms-' + utcDt + '.json';
     console.log('File Name : ', this.fileName);
+    this.GetData();
   }
 }
