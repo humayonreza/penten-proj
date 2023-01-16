@@ -103,6 +103,73 @@ export class HomeComponent implements OnInit {
     return arr.length;
   }
 
+  test2validate() {
+    // Validate File Name
+    // Check No of Posts and Users
+    // Check the Mean of Posts by uses
+    // If fail to save the file on disk, log the error message
+    this.validateUserNumber = this.arrUser.length === 10 ? true : false;
+    if (this.validateUserNumber) {
+      console.log('Number of Users, ', this.arrUser.length + ' is validated');
+    } else {
+      console.log('Number of Users, ', this.arrUser.length + ' is incorrect');
+    }
+
+    this.validatePostNumber = this.postCount === 100 ? true : false;
+    if (this.validatePostNumber) {
+      console.log('Number of Posts, ', this.postCount + ' is validated');
+    } else {
+      console.log('Number of Posts, ', this.postCount + ' is incorrect');
+    }
+
+    this.validateMean = this.mean === 10 ? true : false;
+    if (this.validateMean) {
+      console.log('Mean is, ', this.mean + ' is validated');
+    } else {
+      console.log('Mean is, ', this.mean + ' is incorrect');
+    }
+
+    // let str = this.fileName.split('cms-'); 2023-01-15
+    const utcDt = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
+    this.validateFileName = this.validateFileNameIsOK(utcDt);
+    if (this.validateFileName) {
+      console.log('File name, ', this.fileName + ' is matched');
+    } else {
+      console.log('File name, ', this.fileName + ' is not matched');
+    }
+  }
+
+  validateFileNameIsOK(toDate: string) {
+    // .match() method returns an array if matches found, otherwise return null
+    // Array.isArray(some arr) check array
+    let arrCMS = this.fileName.match('cms-');
+    console.log(arrCMS);
+    let isCMSExist = Array.isArray(arrCMS) ? true : false;
+
+    let arrTodate = this.fileName.match(toDate);
+    console.log(arrTodate);
+    let isTodateExist = Array.isArray(arrTodate) ? true : false;
+
+    let arrJSON = this.fileName.match('.json');
+    console.log(arrJSON);
+    let isJsonExist = Array.isArray(arrJSON) ? true : false;
+
+    console.log(
+      'cms- ' +
+        isCMSExist +
+        ' | Date ' +
+        isTodateExist +
+        ' | ext ' +
+        isJsonExist
+    );
+
+    if (isCMSExist && isTodateExist && isJsonExist) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   ngOnInit(): void {
     const utcDt = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
     this.fileName = 'cms-' + utcDt + '.json';

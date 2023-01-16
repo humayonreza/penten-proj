@@ -12,4 +12,16 @@
     To check the log reports please check console ( ctrl + shift + i or Chrome
     Developer console)
   </div>
+  <div class="col-sm-12 mt-2 flex">
+    <button class="btn btn-warning btn-sm" (click)="test2validate()">
+      Test to Validate
+    </button>
+    <button
+      [disabled]="validateFileName ? false : true"
+      class="btn btn-warning btn-sm"
+      (click)="save_file_to_disk()"
+    >
+      Save File to Disk
+    </button>
+  </div>
 </div>
