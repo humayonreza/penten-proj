@@ -1,0 +1,97 @@
+body,
+html {
+  overflow-x: hidden;
+}
+//
+.fontReg {
+  font-family: "Pathway Gothic One", sans-serif;
+  font-size: large;
+}
+
+@media screen and (min-width: 768px) {
+  .isSmart {
+    display: none;
+  }
+  .isTab {
+    display: none;
+  }
+  .isBig {
+    display: inline;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .isSmart {
+    display: none;
+  }
+  .isBig {
+    display: none;
+  }
+  .isSmart {
+    display: inline;
+  }
+}
+@media screen and (max-width: 480px) {
+  .isTab {
+    display: none;
+  }
+  .isBig {
+    display: none;
+  }
+  .isSmart {
+    display: inline;
+  }
+  .smartView {
+    padding-left: 30px;
+  }
+  .isSmartPadding {
+    padding-left: 40px;
+  }
+}
+// ========= Scroll BAr ==================
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ccc;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fff;
+  width: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+  width: 0px;
+}
+
+.btn {
+  background-color: #dc143c;
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #dc143c;
+  color: #fff;
+  font-weight: bold;
+}
+
+.box {
+  border: thin solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+}
