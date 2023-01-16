@@ -7,7 +7,12 @@ import { BackendService } from '../../services/backend.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  fileName: string = '';
   constructor(private backendService: BackendService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const utcDt = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
+    this.fileName = 'cms-' + utcDt + '.json';
+    console.log('File Name : ', this.fileName);
+  }
 }
