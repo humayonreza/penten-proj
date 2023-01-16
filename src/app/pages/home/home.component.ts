@@ -170,6 +170,29 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  save_file_to_disk() {
+    const data = {
+      posts: this.postCount,
+      users: this.arrUser.length,
+      mean_posts_per_user: this.mean,
+      file_name: this.validateFileName
+        ? this.fileName
+        : console.log('Error at File Name'),
+    };
+    console.log(data);
+    this.PostData(data);
+  }
+
+  PostData(data: any) {
+    this.backendService.PostRequest(data).subscribe((resp: any) => {
+      if (resp.ResponseCode == '401') {
+        console.log('File Uploading was not successful.. check server side');
+      } else {
+        console.log('File is saved successfully..');
+      }
+    });
+  }
+
   ngOnInit(): void {
     const utcDt = new Date().toJSON().slice(0, 10).replace(/-/g, '-');
     this.fileName = 'cms-' + utcDt + '.json';
